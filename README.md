@@ -1,73 +1,64 @@
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo_text.svg" width="320" alt="Nest Logo" /></a>
-</p>
+# Welcome To Baraka Backend Challenge
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
 
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://coveralls.io/github/nestjs/nest?branch=master" target="_blank"><img src="https://coveralls.io/repos/github/nestjs/nest/badge.svg?branch=master#9" alt="Coverage" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
+## (A) Auto Installation Using Docker.
+1- Install ```docker``` and ```docker-compose``` depends on your OS,  for docker check [here](https://docs.docker.com/get-docker/), and for docker-compose [here](https://docs.docker.com/compose/install/)
 
-## Description
+2- Extract or clone project and open bash inside base directory.
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+3- Execute ```sudo docker build -t baraka-img . && sudo docker run -p 3000:3000 -it baraka-img```
 
-## Installation
+4- Check API doc below, section(D).
 
-```bash
-$ npm install
-```
 
-## Running the app
 
-```bash
-# development
-$ npm run start
+## (B) Manual Installation.
 
-# watch mode
-$ npm run start:dev
+> Make sure port 3000 free on your host.
 
-# production mode
-$ npm run start:prod
-```
 
-## Test
 
-```bash
-# unit tests
-$ npm run test
+1- Install and configure Node.js engine version 12.16.1 or higher, see [download page](https://nodejs.org/en/download/).
 
-# e2e tests
-$ npm run test:e2e
+2- Execute ```$ npm install -g @nestjs/cli``` to install nest CLI
 
-# test coverage
-$ npm run test:cov
-```
+3- Extract or clone project and open bash inside base directory
 
-## Support
+4- Execute ```$ npm install && npm run build && npm run start``` to install base packages and build project.
 
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
+5- Execute ```npm run test:e2e``` inside ProjectDir to run end to end test cases.
 
-## Stay in touch
+6- Double check .env file for api key and base url for 3rd party url if needed
 
-- Author - [Kamil Myśliwiec](https://kamilmysliwiec.com)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
+7- Check API doc below, section(D).
 
-## License
+***
 
-Nest is [MIT licensed](LICENSE).
+## (C) Assumption for solution
+using Rxjs function specific ```zip``` to combine After all observables emit, and emit values as an array.
+
+>Another Solution can use ```Promise.all([request_1, request_2])``` to take advantage of parallel execution for more fast execution time.
+
+
+***
+
+## (D) API Docs:-
+
+Method: GET 
+
+Base URL: http://localhost:3000
+
+API endpoint: /omdb 
+
+Query params: keyword={{MOVIE_NAME}}
+
+CURL:  ```curl http://localhost:3000/omdb?keyword=matrix```
+
+***
+## (E) Question
+A: The time you spent on the case study -> less than ~4 Hours for read requirement, estimate solution, initialize project, develop and test with docker integration 
+
+B: What would you change in your submission to make it production ready? --> Write unit test for service and controller, make more validation on API, handle some edge cases if result less than 10 record for first page and other 3rd party limitations, add Interceptor for standard response json for all api like 
+```{status:"OK",  message:"Success",  result: <any>}```, Add API limiter/security . 
+
+C: What would you do differently if you had more time? --> add metrics to calculate performance for Promise.all(), zip, merge solution and decide based on need
